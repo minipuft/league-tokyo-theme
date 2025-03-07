@@ -1,11 +1,10 @@
 /*
   Tokyo Night Theme for League of Legends Client
-  Based on floyare's Purple theme
+  Based on elements from acrylic theme and Tokyo Night color palette
   version 1.0
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Orbitron&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
 
 @-webkit-keyframes fadeIn {
   0% {
@@ -33,48 +32,68 @@
   }
 }
 
+:root {
+  /* Tokyo Night color variables */
+  --tokyo-bg: #1a1b26;
+  --tokyo-bg-lighter: #24283b;
+  --tokyo-bg-lighter2: #2f344d;
+  --tokyo-accent: #7aa2f7;
+  --tokyo-accent-hover: #91b4ff;
+  --tokyo-accent-secondary: #bb9af7;
+  --tokyo-text: #c0caf5;
+  --tokyo-text-darker: #a9b1d6;
+  --tokyo-border: #3b4261;
+  
+  /* Font settings */
+  --font-display: 'JetBrains Mono', sans-serif !important;
+  --font-body: 'JetBrains Mono', sans-serif !important;
+}
+
 body {
   overflow: hidden !important;
   position: relative !important;
 }
 
-/* Main viewport styling with Tokyo Night borders */
+/* Main viewport styling with glowing borders */
 #rcp-fe-viewport-root {
   display: flex;
   width: 1280px;
   height: 720px;
   position: relative;
-  border-right: 2px solid #7aa2f7 !important;
-  border-left: 2px solid #7aa2f7 !important;
-  border-bottom: 2px solid #7aa2f7 !important;
-  border-top: 2px solid #7aa2f7 !important;
+  border-right: 2px solid var(--tokyo-accent) !important;
+  border-left: 2px solid var(--tokyo-accent) !important;
+  border-bottom: 2px solid var(--tokyo-accent) !important;
+  border-top: 2px solid var(--tokyo-accent) !important;
   box-sizing: border-box;
   overflow: hidden;
-  background: #1a1b26;
-  filter: drop-shadow(1px 1px 10px #7aa2f7) !important; 
+  background: rgba(26, 27, 38, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  filter: drop-shadow(1px 1px 10px var(--tokyo-accent)) !important; 
 }
 
-/* Navigation app styling */
+/* Navigation app styling with transparency */
 #rcp-fe-viewport-root #rcp-fe-lol-navigation-app {
   pointer-events: none;
   position: relative;
   z-index: 10;
   background: rgba(42, 45, 69, 0.14) !important;
+  backdrop-filter: blur(5px) !important;
 }
 
-/* Social sidebar background gradient */
+/* Social sidebar background gradient with transparency */
 .lol-social-sidebar {
   width: 100%;
   height: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
-  color: #a9b1d6;
+  color: var(--tokyo-text-darker);
   font-size: 12px;
   cursor: default;
   -webkit-user-drag: none;
   -webkit-user-select: none;
-  background: linear-gradient(#1a1b26, rgba(122, 162, 247, 0.1) 18%) !important;
+  background: linear-gradient(var(--tokyo-bg), rgba(122, 162, 247, 0.05) 18%) !important;
+  backdrop-filter: blur(10px) !important;
 }
 
 /* Navigation sections styling */
@@ -83,7 +102,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  color: #c0caf5 !important;
+  color: var(--tokyo-text) !important;
   border: none;
   margin: 0;
   text-decoration: none;
@@ -93,6 +112,7 @@ body {
   height: 100%;
   min-height: 20px;
   cursor: pointer;
+  font-family: var(--font-display);
 }
 
 /* Active section glow effect */
@@ -103,76 +123,40 @@ body {
   left: 0;
   top: 20px;
   margin: 0;
-  background: linear-gradient(to left, transparent, #7aa2f7, transparent) !important;
+  background: linear-gradient(to left, transparent, var(--tokyo-accent), transparent) !important;
 }
 
 /* Active section text styling */
 .section.active, :host-context(lol-uikit-navigation-bar[type=nav-bar-secondary]) .section.active {
-  color: #7aa2f7;
-  text-shadow: 0px 0px 21px #7aa2f7 !important;
+  color: var(--tokyo-accent);
+  text-shadow: 0px 0px 21px var(--tokyo-accent) !important;
 }
 
 /* Active section background */
 .section.active {
-  background-image: linear-gradient(0deg, rgba(122, 162, 247, 0.3) 0%, rgba(26, 27, 38, 0.19) 55%) !important;
+  background-image: linear-gradient(0deg, rgba(122, 162, 247, 0.2) 0%, rgba(26, 27, 38, 0.1) 55%) !important;
 }
 
 .section.active, :host-context(lol-uikit-navigation-bar[type=nav-bar-secondary]) .section.active {
-  color: #c0caf5 !important;
-  text-shadow: 0px 1px 15px #c0caf5 !important;
-  font-family: 'Orbitron', sans-serif !important;
+  color: var(--tokyo-text) !important;
+  text-shadow: 0px 1px 15px var(--tokyo-text) !important;
+  font-family: var(--font-display) !important;
 }
 
-/* Normal section text styling */
-.section, :host-context(lol-uikit-navigation-bar[type=nav-bar-secondary]) .section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: #a9b1d6 !important;
-  border: none;
-  margin: 0;
-  text-decoration: none;
-  outline: none;
-  transition: text-shadow 0.3s ease-in-out, background 1.5s;
-  width: 100%;
-  height: 100%;
-  min-height: 20px;
-  cursor: pointer;
-  font-family: 'Orbitron', sans-serif !important;
-}
-
-/* Video content filter */
-::content .lol-uikit-video-content {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0;
-  filter: hue-rotate(190deg) !important;
-}
-
-/* Full page backdrop */
-lol-uikit-full-page-backdrop {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(26, 27, 38, 0.8) 93%) !important;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-}
-
-/* Play button styling */
+/* Play button styling with glow */
 .play-button-container {
   background-image: none !important;
-  background: linear-gradient(-90deg, #24283b, #1a1b26) !important;
+  background: linear-gradient(-90deg, var(--tokyo-bg-lighter), var(--tokyo-bg)) !important;
   border-radius: 50px !important;
-  border: 2px solid #7aa2f7 !important;
-  filter: drop-shadow(1px 1px 8px #7aa2f7) !important;
+  border: 2px solid var(--tokyo-accent) !important;
+  filter: drop-shadow(1px 1px 8px var(--tokyo-accent)) !important;
   transition: 0.2s !important;
   cursor: pointer;
 }
 
 .play-button-container:hover {
-  filter: drop-shadow(1px 1px 15px #7aa2f7) !important;
+  filter: drop-shadow(1px 1px 15px var(--tokyo-accent)) !important;
+  transform: translateY(-2px);
   transition: 0.2s !important;
 }
 
@@ -181,8 +165,8 @@ lol-uikit-full-page-backdrop {
 }
 
 .play-button-text {
-  color: #c0caf5 !important;
-  font-family: 'Open Sans', sans-serif !important;
+  color: var(--tokyo-text) !important;
+  font-family: var(--font-display) !important;
   content: '▶ PLAY' !important;
   visibility: hidden;
   z-index: 0 !important;
@@ -196,29 +180,30 @@ lol-uikit-full-page-backdrop {
   right: 11px !important;
 }
 
-/* Hide play button text in certain contexts */
-.play-button-container:hover .play-button-text:after {
-  color: #a9b1d6 !important;
+/* Find Match button styling */
+.find-match-button-container {
+  filter: hue-rotate(210deg) !important;
+  transition: transform 0.2s ease-in-out;
 }
 
-.play-button-container:active .play-button-text:after {
-  color: #a9b1d6 !important;
+.find-match-button-container:hover {
+  transform: translateY(-2px);
 }
 
-/* Loading screen */
+/* Loading screen with blur */
 .lol-loading-screen-container.lol-loading-screen-default-state {
-  background: #1a1b26 !important;
+  background: var(--tokyo-bg) !important;
 }
 
 .lol-loading-screen-container {
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px) !important;
 }
 
 /* Online status indicators */
 .availability-icon {
-  background-color: #7aa2f7 !important;
-  border-color: #9ACDFF !important;
-  filter: drop-shadow(0px 0px 4px #7aa2f7);
+  background-color: var(--tokyo-accent) !important;
+  border-color: var(--tokyo-accent-hover) !important;
+  filter: drop-shadow(0px 0px 4px var(--tokyo-accent));
   border-radius: 10px;
 }
 
@@ -227,91 +212,191 @@ lol-uikit-full-page-backdrop {
 }
 
 .availability-icon.away {
-  background-color: #24283b !important;
-  border-color: #5C20BD !important;
+  background-color: var(--tokyo-bg-lighter) !important;
+  border-color: var(--tokyo-accent-secondary) !important;
 }
 
 /* Status messages */
 .status-message.offline {
-  color: #565f89 !important;
+  color: var(--tokyo-border) !important;
 }
 
 .status-message-wrapper {
-  color: #7aa2f7 !important;
+  color: var(--tokyo-accent) !important;
 }
 
 .status-message.chat {
-  color: #7aa2f7 !important;
+  color: var(--tokyo-accent) !important;
 }
 
-.status-message.game-status.chat {
-  color: #7aa2f7 !important;
+/* Hover-to-show elements from acrylic theme */
+
+/* Chat, missions, league-voice buttons and version info */
+.alpha-version-panel {
+  opacity: 0.3 !important;
+  transition: 0.2s !important;
 }
 
-/* Social roster hover effects */
-lol-social-roster-member .open-party .open-party-indicator {
-  background: #7aa2f7 !important;
+.alpha-version-panel:hover {
+  opacity: 1 !important;
+  transition: 0.2s !important;
 }
 
-lol-social-roster-member .open-party-indicator {
-  background: #3b4261 !important;
+/* Leven xp ring, user icon */
+.xp-ring {
+  opacity: 0.3 !important;
+  transition: 0.2s !important;
 }
 
-.status-message.open-party.chat {
-  color: #7aa2f7 !important;
+.identity-icon:hover>.summoner-level-icon>.xp-ring {
+  opacity: 1 !important;
+  transition: 0.2s !important;
 }
 
-/* XP and level indicators */
+/* Level ring styling */
+.summoner-level-ring {
+  display: none !important;
+}
+
+.bottom.unfilled.xp-ring {
+  background: var(--tokyo-bg-lighter);
+}
+
+.middle.filled.xp-ring {
+  background: var(--tokyo-accent);
+}
+
 .filled.xp-ring {
-  background-color: #7aa2f7 !important;
+  background-color: var(--tokyo-accent) !important;
 }
 
-lol-social-status .status-message.dnd {
-  color: #bb9af7 !important;
-  font-weight: bold !important;
-  text-transform: uppercase;
+/* Notifications button */
+.notifications-button {
+  opacity: 0.3 !important;
+  transition: 0.2s !important;
+}
+
+.notifications-button:hover {
+  opacity: 1 !important;
+  transition: 0.2s !important;
+}
+
+/* Status indicator hover */
+.lower-details>.status,
+.lower-details>lol-social-availability-hitbox {
+  opacity: 0.3 !important;
+  transition: 0.2s !important;
+}
+
+.lower-details:hover>.status,
+.lower-details:hover>lol-social-availability-hitbox {
+  opacity: 1 !important;
+  transition: 0.2s !important;
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar-thumb {
-  background-color: #7aa2f7 !important;
+  background-color: var(--tokyo-accent) !important;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(26, 27, 38, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--tokyo-accent-hover) !important;
 }
 
 /* Social notifications */
 .mission-button .count-badge {
-  background-color: #bb9af7 !important;
+  background-color: var(--tokyo-accent-secondary) !important;
 }
 
 .social-count-badge {
-  background-color: #bb9af7 !important;
-}
-
-lol-social-friend-requests .friend-requests-header {
-  color: #bb9af7 !important;
-}
-
-.chat-bubble .my-bubble {
-  background-color: #7aa2f7 !important;
-}
-
-lol-social-chat-window .conversation.unread .conversation-subtitle {
-  color: #7aa2f7 !important;
-}
-
-lol-social-chat-window .conversation.active::before {
-  background-color: #7aa2f7 !important;
-}
-
-lol-social-roster .more-unread .more-unread-bar {
-  background-color: #7aa2f7 !important;
+  background-color: var(--tokyo-accent-secondary) !important;
 }
 
 /* Chat styling */
 .chat-header {
-  border-bottom: thin solid #3b4261 !important;
+  border-bottom: thin solid var(--tokyo-border) !important;
 }
 
-/* Various element color adjustments */
-.heading {
-  border-bottom: thin solid #3b4261 !important;
+.chat-bubble .my-bubble {
+  background-color: var(--tokyo-accent) !important;
+}
+
+/* Transparent elements from acrylic theme */
+.clash-root-background-landing,
+.hold-leave,
+.collections-application,
+.clash-root-background-landing,
+.__rcp-fe-lol-store,
+.loot-backdrop.background-static,
+.personalized-offers-root,
+.parties-view,
+.yourshop-root,
+.clash-root-background,
+.clash-root-background-landing,
+.store-backdrop,
+.challenges-collection-component>.background,
+.loot-backdrop .lol-uikit-video-content,
+.rcp-fe-lol-event-shop-application,
+.champ-select-bg-darken,
+.rcp-fe-lol-game-in-progress,
+.postgame-background-image,
+.clash-root-background-landing,
+.clash-aram-intro-modal,
+.clash-root-background,
+.postgame-champion-background-wrapper,
+.stats-backdrop,
+.rcp-fe-viewport-sidebar,
+.loot-loading-screen,
+.lol-social-sidebar,
+.cdp-backdrop.progression:after,
+.cdp-backdrop-component,
+.cdp-backdrop:after {
+  background-color: transparent !important;
+  background: transparent !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Additional fullscreen elements */
+lol-uikit-full-page-backdrop {
+  background: linear-gradient(rgba(26, 27, 38, 0.7), rgba(26, 27, 38, 0.8) 93%) !important;
+  backdrop-filter: blur(20px) !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* Animation effects for dialogs */
+.lol-uikit-dialog-frame {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in animation for various elements */
+.ready-check-root-element,
+.fake-application-template {
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+}
+
+/* Make the client mask gradients */
+.screen-root.active {
+  -webkit-mask: linear-gradient(180deg, transparent 0%, white 30%, white 100%);
+  mask: linear-gradient(90deg, transparent 0%, white 10%, white 100%);
+}
+
+.rcp-fe-viewport-persistent {
+  -webkit-mask: linear-gradient(270deg, transparent 0%, white 20%, white 100%);
+  mask: linear-gradient(270deg, transparent 0%, white 20%, white 100%);
+}
+
+/* Font application throughout the client */
+body, button, input, select, textarea, .lol-uikit-dialog-frame, .champion-name-container, .summoner-name {
+  font-family: var(--font-display) !important;
 }
