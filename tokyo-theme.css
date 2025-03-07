@@ -1,10 +1,9 @@
 /*
   Tokyo Night Theme for League of Legends Client
-  Based on elements from acrylic theme and Tokyo Night color palette
   version 1.0
 */
 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600&display=swap');
 
 @-webkit-keyframes fadeIn {
   0% {
@@ -92,8 +91,8 @@ body {
   cursor: default;
   -webkit-user-drag: none;
   -webkit-user-select: none;
-  background: linear-gradient(var(--tokyo-bg), rgba(122, 162, 247, 0.05) 18%) !important;
-  backdrop-filter: blur(10px) !important;
+  background: linear-gradient(180deg, var(--tokyo-bg) 0%, var(--tokyo-bg-lighter) 100%) !important;
+  border-left: 1px solid var(--tokyo-border) !important;
 }
 
 /* Navigation sections styling */
@@ -146,12 +145,13 @@ body {
 /* Play button styling with glow */
 .play-button-container {
   background-image: none !important;
-  background: linear-gradient(-90deg, var(--tokyo-bg-lighter), var(--tokyo-bg)) !important;
+  background: linear-gradient(90deg, var(--tokyo-bg-lighter), var(--tokyo-bg)) !important;
   border-radius: 50px !important;
   border: 2px solid var(--tokyo-accent) !important;
   filter: drop-shadow(1px 1px 8px var(--tokyo-accent)) !important;
   transition: 0.2s !important;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(122, 162, 247, 0.4) !important;
 }
 
 .play-button-container:hover {
@@ -182,12 +182,15 @@ body {
 
 /* Find Match button styling */
 .find-match-button-container {
-  filter: hue-rotate(210deg) !important;
-  transition: transform 0.2s ease-in-out;
+  background: linear-gradient(90deg, var(--tokyo-accent), var(--tokyo-accent-secondary)) !important;
+  box-shadow: 0 0 15px rgba(122, 162, 247, 0.4) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  border-radius: 4px !important;
 }
 
 .find-match-button-container:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 0 20px rgba(122, 162, 247, 0.6) !important;
 }
 
 /* Loading screen with blur */
@@ -205,6 +208,7 @@ body {
   border-color: var(--tokyo-accent-hover) !important;
   filter: drop-shadow(0px 0px 4px var(--tokyo-accent));
   border-radius: 10px;
+  box-shadow: 0 0 5px var(--tokyo-accent) !important;
 }
 
 .availability-icon.mobile {
@@ -227,6 +231,21 @@ body {
 
 .status-message.chat {
   color: var(--tokyo-accent) !important;
+}
+
+/* Player profile card */
+.parties-player-container {
+  background: rgba(36, 40, 59, 0.7) !important;
+  border: 1px solid var(--tokyo-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(26, 27, 38, 0.4) !important;
+  overflow: hidden !important;
+}
+
+/* Player emblems */
+.regalia-parties-banner-backdrop,
+.regalia-parties-crest-backdrop {
+  filter: drop-shadow(0 0 5px var(--tokyo-accent)) !important;
 }
 
 /* Hover-to-show elements from acrylic theme */
@@ -295,14 +314,14 @@ body {
 }
 
 /* Scrollbar styling */
-::-webkit-scrollbar-thumb {
-  background-color: var(--tokyo-accent) !important;
-  border-radius: 4px;
+::-webkit-scrollbar {
+  width: 6px !important;
+  background-color: rgba(26, 27, 38, 0.3) !important;
 }
 
-::-webkit-scrollbar {
-  width: 8px;
-  background-color: rgba(26, 27, 38, 0.3);
+::-webkit-scrollbar-thumb {
+  background-color: var(--tokyo-accent) !important;
+  border-radius: 3px !important;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -318,6 +337,16 @@ body {
   background-color: var(--tokyo-accent-secondary) !important;
 }
 
+/* Friend list styling */
+.lol-social-roster-member {
+  border-radius: 4px !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.lol-social-roster-member:hover {
+  background-color: rgba(36, 40, 59, 0.8) !important;
+}
+
 /* Chat styling */
 .chat-header {
   border-bottom: thin solid var(--tokyo-border) !important;
@@ -327,7 +356,47 @@ body {
   background-color: var(--tokyo-accent) !important;
 }
 
-/* Transparent elements from acrylic theme */
+/* Navigation bar styling */
+.league-header-logos {
+  filter: drop-shadow(0 0 3px var(--tokyo-accent)) !important;
+}
+
+/* Top navigation buttons */
+.navigation-bar-button {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+.navigation-bar-button:hover {
+  border-color: var(--tokyo-accent) !important;
+  background: rgba(122, 162, 247, 0.1) !important;
+}
+
+/* Champion selection circles */
+.champion-select-container {
+  filter: drop-shadow(0 0 8px rgba(122, 162, 247, 0.4)) !important;
+}
+
+.champion-select-circle {
+  border: 2px solid var(--tokyo-accent) !important;
+  transition: all 0.3s ease !important;
+}
+
+.champion-select-circle:hover {
+  border-color: var(--tokyo-accent-secondary) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Dialog windows */
+.lol-uikit-dialog-frame {
+  border: 1px solid var(--tokyo-border) !important;
+  background: linear-gradient(135deg, var(--tokyo-bg), var(--tokyo-bg-lighter)) !important;
+  box-shadow: 0 0 20px rgba(26, 27, 38, 0.8) !important;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Transparent elements with blur */
 .clash-root-background-landing,
 .hold-leave,
 .collections-application,
@@ -353,16 +422,21 @@ body {
 .stats-backdrop,
 .rcp-fe-viewport-sidebar,
 .loot-loading-screen,
-.lol-social-sidebar,
-.cdp-backdrop.progression:after,
-.cdp-backdrop-component,
-.cdp-backdrop:after {
+.lol-social-sidebar {
   background-color: transparent !important;
   background: transparent !important;
   backdrop-filter: blur(10px) !important;
 }
 
-/* Additional fullscreen elements */
+/* Background overlay for client */
+.parties-background,
+.parties-view,
+.parties-game-search-background {
+  background: linear-gradient(135deg, rgba(26, 27, 38, 0.8), rgba(36, 40, 59, 0.8)) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Fullscreen backdrops */
 lol-uikit-full-page-backdrop {
   background: linear-gradient(rgba(26, 27, 38, 0.7), rgba(26, 27, 38, 0.8) 93%) !important;
   backdrop-filter: blur(20px) !important;
@@ -373,11 +447,6 @@ lol-uikit-full-page-backdrop {
   bottom: 0;
 }
 
-/* Animation effects for dialogs */
-.lol-uikit-dialog-frame {
-  animation: fadeIn 0.3s ease-in-out;
-}
-
 /* Fade-in animation for various elements */
 .ready-check-root-element,
 .fake-application-template {
@@ -385,7 +454,7 @@ lol-uikit-full-page-backdrop {
   animation-duration: 1.5s;
 }
 
-/* Make the client mask gradients */
+/* Gradient masks */
 .screen-root.active {
   -webkit-mask: linear-gradient(180deg, transparent 0%, white 30%, white 100%);
   mask: linear-gradient(90deg, transparent 0%, white 10%, white 100%);
@@ -399,4 +468,59 @@ lol-uikit-full-page-backdrop {
 /* Font application throughout the client */
 body, button, input, select, textarea, .lol-uikit-dialog-frame, .champion-name-container, .summoner-name {
   font-family: var(--font-display) !important;
+}
+
+/* Party and matchmaking UI */
+.parties-invite-info-panel {
+  background: rgba(26, 27, 38, 0.7) !important;
+  border: 1px solid var(--tokyo-border) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.custom-invite-header,
+.parties-invite-info-panel-body {
+  border: none !important;
+  background: none !important;
+}
+
+/* Fix for background image overlays */
+.cdp-backdrop-img {
+  opacity: 0.4 !important;
+  position: unset !important;
+  filter: saturate(0.7) brightness(0.7) !important;
+}
+
+/* Clean up borders */
+.group-separator {
+  display: none !important;
+  border: none !important;
+}
+
+.navigation-root-component {
+  border-bottom: none !important;
+}
+
+/* Hide unnecessary UI elements */
+.navbar-blur {
+  background: transparent !important;
+  width: 0 !important;
+}
+
+/* Position adjustments */
+.lower-details {
+  gap: 5px !important;
+}
+
+/* Remove default buttons that clash with theme */
+.lol-uikit-flat-button-secondary {
+  background: var(--tokyo-bg-lighter) !important;
+  border: 1px solid var(--tokyo-accent) !important;
+  color: var(--tokyo-text) !important;
+  transition: all 0.2s ease !important;
+}
+
+.lol-uikit-flat-button-secondary:hover {
+  background: rgba(122, 162, 247, 0.2) !important;
+  border-color: var(--tokyo-accent-hover) !important;
 }
